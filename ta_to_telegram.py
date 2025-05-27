@@ -107,7 +107,13 @@ def create_table(data, title, columns):
 
 def main():
     # --- Send Title Message ---
-    title_message = f"📢 *Nepse Technical Alerts for {current_date}*"
+    title_message = f"""
+    ━━━━━━━━━━━━━━━━━━━━━━
+    📢 *NEPSE TECHNICAL ALERTS*
+    📅 *{current_date}*
+    ━━━━━━━━━━━━━━━━━━━━━━
+    """
+
     telegram_url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
     payload = {
         "chat_id": TELEGRAM_CHAT_ID,
