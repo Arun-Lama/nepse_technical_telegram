@@ -234,12 +234,7 @@ def main():
     spike_fig = create_bar_chart(top10_spikes, "Hot Stocks (volume vs Average 50-Day volume)", "% Spike", 'orange')
     if spike_fig:
         send_plot_to_telegram("📊 Hot Stocks (volume vs Average 50-Day volume)", spike_fig)
-
-
-    def main():
-    # ... all your existing processing and chart sending code ...
-
-    # --- Final Disclaimer Message ---
+    
     disclaimer_text = (
         "⚠️ *Disclaimer:*\n"
         "The content shared here is for informational purposes only and should not be considered as financial advice. "
