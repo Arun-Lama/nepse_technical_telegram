@@ -1,0 +1,12 @@
+pandas
+pandas_ta
+plotly
+requests
+python-dotenv
+gspread
+gspread-dataframe
+google-api-python-client
+google-auth
+google-auth-oauthlib
+google-auth-httplib2
+oauth2client
