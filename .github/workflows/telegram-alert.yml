@@ -2,7 +2,8 @@ name: Telegram TA Signal
 
 on:
   schedule:
-    - cron: '35 9 * * 0-4'  # Runs at 3:20 PM NPT (UTC+5:45), Sunday to Thursday
+  - cron: '10 10 * * 0-4'  # Runs at 3:55 PM NPT, Sunday to Thursday
+
   workflow_dispatch:
 
 jobs:
