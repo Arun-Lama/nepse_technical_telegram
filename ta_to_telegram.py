@@ -31,8 +31,7 @@ def send_plot_to_telegram(title, fig):
 
     files = {'photo': buf}
     data = {
-        "chat_id": TELEGRAM_CHAT_ID,
-        "caption": f"{title} ({current_date} {current_time_str})",
+        "chat_id": TELEGRAM_CHAT_ID
     }
 
     try:
@@ -44,33 +43,39 @@ def send_plot_to_telegram(title, fig):
     except Exception as e:
         print(f"[EXCEPTION] Failed to send {title}: {str(e)}")
 
-def create_bar_chart(data, title, ylabel, color='skyblue'):
-    """Create a Plotly bar chart"""
+
+def create_bar_chart(data, title, xlabel, color='skyblue'):
+    """Create a horizontal Plotly bar chart optimized for Telegram"""
     if data.empty:
         print(f"No data available for {title}")
         return None
-        
-    data = data.head(10)  # Ensure only top 10
+
+    data = data.head(10)[::-1]  # Top 10 and reverse for horizontal bars
+
     fig = go.Figure()
     fig.add_trace(go.Bar(
-        x=data.index,
-        y=data.values.round(2),
+        y=data.index,
+        x=data.values.round(2),
+        orientation='h',
         marker_color=color,
         text=data.values.round(2),
         textposition='auto',
         texttemplate='%{text:.2f}'
     ))
-    
+
     fig.update_layout(
-        title=dict(text=title, x=0.5, xanchor='center'),
-        yaxis_title=ylabel,
-        xaxis_title="Ticker",
+        title=dict(text=title, x=0.5, xanchor='center', font=dict(size=24)),
+        xaxis_title=xlabel,
+        yaxis_title="Ticker",
         template="plotly_white",
-        height=600,
-        margin=dict(l=20, r=20, t=60, b=20)
+        height=800,
+        width=1000,
+        margin=dict(l=120, r=40, t=80, b=40),  # Add space for ticker labels
+        font=dict(size=16)
     )
-    
+
     return fig
+
 
 def create_table(data, title, columns):
     """Create a Plotly table"""
