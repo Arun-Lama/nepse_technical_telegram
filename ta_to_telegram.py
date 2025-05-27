@@ -12,8 +12,8 @@ from read_write_google_sheet import read_google_sheet
 
 # --- Load environment variables ---
 load_dotenv()
-TELEGRAM_BOT_TOKEN = os.getenv("telegram_bot_token")
-TELEGRAM_CHAT_ID = os.getenv("channel_id")  # e.g., '@yourchannel'
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+TELEGRAM_CHAT_ID = os.getenv("CHANNEL_ID")  # e.g., '@yourchannel'
 
 # --- Time info ---
 NPT = ZoneInfo("Asia/Kathmandu")
