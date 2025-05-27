@@ -11,7 +11,7 @@ jobs:
 
     env:
       TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-      TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
+      CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
       GOOGLE_AUTH: ${{ secrets.GOOGLE_AUTH }}
 
     steps:
