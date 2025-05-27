@@ -106,6 +106,25 @@ def create_table(data, title, columns):
     return fig
 
 def main():
+    # --- Send Title Message ---
+    title_message = f"📢 *Nepse Technical Alerts for {current_date}*"
+    telegram_url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
+    payload = {
+        "chat_id": TELEGRAM_CHAT_ID,
+        "text": title_message,
+        "parse_mode": "Markdown"
+    }
+
+    try:
+        response = requests.post(telegram_url, data=payload)
+        if response.ok:
+            print("✅ Title message sent.")
+        else:
+            print(f"[ERROR] Title: {response.text}")
+    except Exception as e:
+        print(f"[EXCEPTION] Failed to send title: {str(e)}")
+
+
     # --- Load data ---
     sheet_id = "1n_QX2H3HEM1wYbEQmHV4fYBwfDzd19sBEiOv4MBXrFo"
     try:
@@ -215,6 +234,34 @@ def main():
     spike_fig = create_bar_chart(top10_spikes, "Hot Stocks (volume vs Average 50-Day volume)", "% Spike", 'orange')
     if spike_fig:
         send_plot_to_telegram("📊 Hot Stocks (volume vs Average 50-Day volume)", spike_fig)
+
+
+    def main():
+    # ... all your existing processing and chart sending code ...
+
+    # --- Final Disclaimer Message ---
+    disclaimer_text = (
+        "⚠️ *Disclaimer:*\n"
+        "The content shared here is for informational purposes only and should not be considered as financial advice. "
+        "Always do your own research before making investment decisions. No one is liable for any losses incurred."
+    )
+
+    telegram_url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
+    payload = {
+        "chat_id": TELEGRAM_CHAT_ID,
+        "text": disclaimer_text,
+        "parse_mode": "Markdown"
+    }
+
+    try:
+        response = requests.post(telegram_url, data=payload)
+        if response.ok:
+            print("✅ Disclaimer message sent.")
+        else:
+            print(f"[ERROR] Disclaimer: {response.text}")
+    except Exception as e:
+        print(f"[EXCEPTION] Failed to send disclaimer: {str(e)}")
+
 
 if __name__ == "__main__":
     main()
