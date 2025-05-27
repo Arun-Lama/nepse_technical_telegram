@@ -11,3 +11,4 @@ google-auth-oauthlib
 google-auth-httplib2
 oauth2client
 numpy==1.24.4  # 👈 Fix for pandas_ta compatibility
+kaleido
